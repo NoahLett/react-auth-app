@@ -43,13 +43,31 @@ const Register = () => {
         setValidPwd(result);
         const match = pwd === matchPwd;
         setValidMatch(match);
-    }, [pwd. matchPwd])
+    }, [pwd, matchPwd])
 
     useEffect(() => {
         setErrMsg('');
     }, [user, pwd, matchPwd])
 
+    const handleSubmit = async e => {
+        e.preventDefault();
+        const v1 = USER_REGEX.test(user);
+        const v2 = PWD_REGEX.test(pwd);
+        if (!v1 || !v2) {
+            setErrMsg("Invalid Entry");
+            return;
+        }
+        setSuccess(true);
+    }
+
     return (
+        <>
+        {success ? (
+            <div>
+                <h1>Success!</h1>
+                <p><a href="#">Sign In</a></p>
+            </div>    
+        ) : (    
         <div>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <h1>Register</h1>
@@ -75,7 +93,7 @@ const Register = () => {
                     onFocus={() => setUserFocus(true)}
                     onBlur={() => setUserFocus(false)}
                 />
-                <p id="uidnote" className={userFocus && user && !validname ? "instructions" : "offscreen"}>
+                <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
                     <FontAwesomeIcon icon={faInfoCircle} />
                     4 to 24 characters.<br/>
                     Must begin with a letter.<br/>
@@ -149,6 +167,8 @@ const Register = () => {
             </p>
 
         </div>
+        )}
+        </>
     )
 }
 
