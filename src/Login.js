@@ -20,10 +20,20 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
     }
 
     return (
+        <>
+        {success ? (
+            <div>
+                <h1>Welcome back, {user}!</h1>
+                <br/>
+                <p>
+                    <a href="#">Go to Home</a>
+                </p>
+            </div>
+        ) : (
         <div>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <h1>Sign In</h1>
@@ -56,6 +66,9 @@ const Login = () => {
                 </span>
             </p>
         </div>
+        )
+        }
+        </>
     )
 }
 
