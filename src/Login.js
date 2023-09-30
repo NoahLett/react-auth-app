@@ -20,7 +20,19 @@ const Login = () => {
 
     return (
         <div>
-
+            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+            <h1>Sign In</h1>
+            <form>
+              <label htmlFor="username">Username:</label>
+              <input 
+                type="text" 
+                id="username" 
+                ref={userRef}
+                autoComplete="off"
+                onChange={(e) => setUser(e.target.value)}
+                value={user}
+                required />
+            </form>
         </div>
     )
 }
