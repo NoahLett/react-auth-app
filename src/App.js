@@ -14,6 +14,14 @@ function App() {
         <Route path="unauthorized" element={<Unauthorized />} />
 
         {/* Protected Routes */}
+        <Route path="/" element={<Home />} />
+        <Route path="editor" element={<Editor />} />
+        <Route path="admin" element={<Admin />} />
+        <Route path="lounge" element={<Lounge />} />
+
+        {/* Catch All */}
+        <Route path="*" element={<Missing />} />
+
       </Route>
     </Routes>
   );
