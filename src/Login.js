@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef, useState, useEffect, useContext } from "react";
 import AuthContext from "./context/AuthProvider";
-import axios from "axios";
+import axios from "./api/axios";
 
 const LOGIN_URL = '/auth';
 
@@ -27,7 +27,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const resposne = await axios.post(LOGIN_URL,
+            const response = await axios.post(LOGIN_URL,
                 JSON.stringify({ user, pwd }),
                 {
                     headers: { 'Content-Type': 'application/json' },
@@ -40,7 +40,7 @@ const Login = () => {
             setAuth({ user, pwd, roles, accessToken });
             setUser('');
             setPwd('');
-            setSuccess('');
+            setSuccess(true);
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');
