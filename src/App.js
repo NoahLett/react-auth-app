@@ -1,7 +1,8 @@
-import Register from './Register';
-import Login from './Login';
+import Register from './components/Register';
+import Login from './components/Login';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
+import RequireAuth from './components/RequireAuth';
 
 function App() {
   return (
@@ -14,10 +15,12 @@ function App() {
         <Route path="unauthorized" element={<Unauthorized />} />
 
         {/* Protected Routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="editor" element={<Editor />} />
-        <Route path="admin" element={<Admin />} />
-        <Route path="lounge" element={<Lounge />} />
+        <Route element={<RequireAuth />}>
+          <Route path="/" element={<Home />} />
+          <Route path="editor" element={<Editor />} />
+          <Route path="admin" element={<Admin />} />
+          <Route path="lounge" element={<Lounge />} />
+        </Route>
 
         {/* Catch All */}
         <Route path="*" element={<Missing />} />
