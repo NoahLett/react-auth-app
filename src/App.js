@@ -1,5 +1,12 @@
 import Register from './components/Register';
 import Login from './components/Login';
+import Admin from './components/Admin';
+import Editor from './components/Editor';
+import Home from './components/Home';
+import LinkPage from './components/LinkPage';
+import Lounge from './components/Lounge';
+import Unauthorized from './components/Unauthorized';
+import Missing from './components/Missing';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import RequireAuth from './components/RequireAuth';
