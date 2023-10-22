@@ -2,18 +2,21 @@ import React from "react";
 import { useRef, useState, useEffect } from "react";
 import axios from "../api/axios";
 import useAuth from "../hooks/useAuth";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const LOGIN_URL = '/auth';
 
 const Login = () => {
     const { setAuth } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const userRef = useRef();
     const errRef = useRef();
 
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         userRef.current.focus();
@@ -40,7 +43,7 @@ const Login = () => {
             setAuth({ user, pwd, roles, accessToken });
             setUser('');
             setPwd('');
-            setSuccess(true);
+            navigate(from, { replace: true });
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');
@@ -56,16 +59,6 @@ const Login = () => {
     }
 
     return (
-        <>
-        {success ? (
-            <div>
-                <h1>Welcome back, {user}!</h1>
-                <br/>
-                <p>
-                    <a href="#">Go to Home</a>
-                </p>
-            </div>
-        ) : (
         <div>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <h1>Sign In</h1>
@@ -98,9 +91,6 @@ const Login = () => {
                 </span>
             </p>
         </div>
-        )
-        }
-        </>
     )
 }
 
