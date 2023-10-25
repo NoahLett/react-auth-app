@@ -26,7 +26,7 @@ const Users = () => {
             isMounted = false;
             controller.abort();
         }
-        
+
     }, [])
 
   return (
@@ -42,3 +42,5 @@ const Users = () => {
     </article>
     )
 }
+
+export default Users;
