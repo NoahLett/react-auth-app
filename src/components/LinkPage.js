@@ -14,7 +14,7 @@ const LinkPage = () => {
             <Link to="/editor">Editors Page</Link><br />
             <Link to="/admin">Admin Page</Link>
         </section>
-    )
+    );
 }
 
 export default LinkPage;
