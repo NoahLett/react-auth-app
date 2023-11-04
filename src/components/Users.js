@@ -28,7 +28,7 @@ const Users = () => {
             controller.abort();
         }
 
-    }, [])
+    }, [axiosPrivate])
 
   return (
     <article>
