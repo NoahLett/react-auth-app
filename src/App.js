@@ -10,7 +10,7 @@ import Missing from './components/Missing';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import RequireAuth from './components/RequireAuth';
-import PersistLogin from './components/persistLogin';
+import PersistLogin from './components/PersistLogin'
 
 const ROLES = {
   'User': 1939,
