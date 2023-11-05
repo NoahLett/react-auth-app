@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
-import useAxiosPrivate from '../hooks/useAxiosPrivate';
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Users = () => {
-    const [ users, setUsers ] = useState();
+    const [users, setUsers] = useState();
     const axiosPrivate = useAxiosPrivate();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         let isMounted = true;
@@ -18,30 +21,32 @@ const Users = () => {
                 isMounted && setUsers(response.data);
             } catch (err) {
                 console.error(err);
+                navigate('/login', { state: { from: location }, replace: true });
             }
         }
 
         getUsers();
 
         return () => {
-            isMounted = false;
-            controller.abort();
+            if (!isMounted) {
+                isMounted = false;
+                controller.abort();
+            }
         }
+    }, [axiosPrivate, location, navigate])
 
-    }, [axiosPrivate])
-
-  return (
-    <article>
-        <h2>Users List</h2>
-        {users?.length
-        ? (
-            <ul>
-                {users.map((user, i) => <li key={i}>{user?.username}</li>)}
-            </ul>
-        ) : <p>No users to display</p>
-        }
-    </article>
-    )
-}
+    return (
+        <article>
+            <h2>Users List</h2>
+            {users?.length
+                ? (
+                    <ul>
+                        {users.map((user, i) => <li key={i}>{user?.username}</li>)}
+                    </ul>
+                ) : <p>No users to display</p>
+            }
+        </article>
+    );
+};
 
 export default Users;
