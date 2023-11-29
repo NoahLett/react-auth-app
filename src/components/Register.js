@@ -90,12 +90,12 @@ const Register = () => {
     return (
         <>
         {success ? (
-            <div>
+            <section>
                 <h1>Success!</h1>
                 <p><Link to="/login">Sign In</Link></p>
-            </div>    
+            </section>    
         ) : (    
-        <div>
+        <section>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <h1>Register</h1>
             <form onSubmit={handleSubmit}>
@@ -193,7 +193,7 @@ const Register = () => {
                 </span>
             </p>
 
-        </div>
+        </section>
         )}
         </>
     )
