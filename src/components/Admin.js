@@ -3,7 +3,7 @@ import Users from './Users';
 
 const Admin = () => {
     return (
-        <div>
+        <section>
             <h1>Administrator's Page</h1>
             <br />
             <Users />
@@ -11,7 +11,7 @@ const Admin = () => {
             <div>
                 <Link to="/">Home</Link>
             </div>
-        </div>
+        </section>
     )
 }
 
