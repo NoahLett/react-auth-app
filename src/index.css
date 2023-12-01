@@ -127,3 +127,15 @@ li {
     justify-content: flex-start;
     align-items: flex-end;
 }
+
+.persist-check {
+    font-size: 0.75rem;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.persist-check label {
+    margin: 0 0 0 0.25rem;
+}
