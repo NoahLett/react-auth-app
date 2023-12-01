@@ -128,14 +128,14 @@ li {
     align-items: flex-end;
 }
 
-.persistCheck {
+.persist-check {
     font-size: 0.75rem;
     margin-top: 10px;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-end;
+    align-items: center;
 }
 
-.persistCheck label {
-    margin: 0;
+.persist-check label {
+    margin: 0 0 0 0.25rem;
 }

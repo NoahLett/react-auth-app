@@ -58,6 +58,14 @@ const Login = () => {
         }
     }
 
+    const togglePersist = () => {
+        setPersist(prev => !prev);
+    }
+
+    useEffect(() => {
+        localStorage.setItem("persist", persist);
+    }, [persist])
+
     return (
         <section>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
@@ -83,7 +91,7 @@ const Login = () => {
                 required />
 
                 <button>Sign In</button>
-                <div className="persisCheck">
+                <div className="persist-check">
                     <input 
                         type="checkbox"
                         id="persist"
