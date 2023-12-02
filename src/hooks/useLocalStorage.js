@@ -1,5 +1,18 @@
 import { useState, useEffect } from "react";
 
+const getLocalValue = (key, initValue) => {
+    //Next.js
+    if (typeof window === undefined) return initValue;
+
+    // if value is already stored
+    const localValue = JSON.parse(localStorage.getItem(key));
+    if (localValue) return localValue;
+
+    if (initValue instanceof Function) return initValue();
+
+    return initValue;
+}
+
 const useLocalStorage = (key, initValue) => {
     const [value, setValue] = useState(JSON.parse(localStorage.getItem(key)) || initValue);
 
