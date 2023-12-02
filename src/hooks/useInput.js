@@ -1,7 +1,7 @@
-import { useState } from "react";
+import useLocalStorage from "./useLocalStorage";
 
-const useInput = (initValue) => {
-    const [value, setValue] = useState(initValue);
+const useInput = (key, initValue) => {
+    const [value, setValue] = useLocalStorage(key, initValue);
 
     const reset = () => setValue(initValue);
 
@@ -10,7 +10,7 @@ const useInput = (initValue) => {
         onChange: (e) => setValue(e.target.value)
     }
 
-    return [ vaule, reset, attributeObj ];
+    return [ value, reset, attributeObj ];
 }
 
 export default useInput
